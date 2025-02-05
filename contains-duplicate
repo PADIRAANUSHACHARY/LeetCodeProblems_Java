@@ -11,16 +11,25 @@ class Solution {
         //         }
         //     }
         // }
+
         //2 method->sort-then find duplicates->time complexity = O(nlogn)
-        //optimised method=  hash set->search in O(1) -> no duplicates
-        //now we have O(n) = time = space complexity
-        HashSet<Integer> h = new HashSet<>();
-        for(int num : nums){
-            if(h.contains(num)){
+        Arrays.sort(nums);
+        int n= nums.length;
+        for(int i=1;i<n;i++){
+            if(nums[i]==nums[i-1]){
                 return true;
             }
-            h.add(num);
         }
+
+        //optimised method=  hash set->search in O(1) -> no duplicates
+        //now we have O(n) = time =space
+        // HashSet<Integer> h = new HashSet<>();
+        // for(int num : nums){
+        //     if(h.contains(num)){
+        //         return true;
+        //     }
+        //     h.add(num);
+        // }
 
         return false;
     }
