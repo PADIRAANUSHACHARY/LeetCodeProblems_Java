@@ -1,0 +1,27 @@
+//leetcode link: https://leetcode.com/problems/contains-duplicate/
+
+
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        //brute force method-time O(n*2)
+        // for(int i=0;i<nums.length;i++){
+        //     for(int j=i+1;j<nums.length;j++){
+        //         if(nums[i]==nums[j]){
+        //             return true;
+        //         }
+        //     }
+        // }
+        //2 method->sort-then find duplicates->time complexity = O(nlogn)
+        //optimised method=  hash set->search in O(1) -> no duplicates
+        //now we have O(n) = time = space complexity
+        HashSet<Integer> h = new HashSet<>();
+        for(int num : nums){
+            if(h.contains(num)){
+                return true;
+            }
+            h.add(num);
+        }
+
+        return false;
+    }
+}
