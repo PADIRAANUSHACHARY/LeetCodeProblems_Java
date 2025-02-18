@@ -1,0 +1,23 @@
+//link: https://leetcode.com/problems/reverse-string/description/
+
+
+class Solution {
+    public void reverseString(char[] s) {
+        int n = s.length;
+        // int start = 0;
+        // int end = n-1;
+        // while(start<=end){
+        //     char c = s[start];
+        //     s[start]=s[end];
+        //     s[end]=c;
+        //     start++;
+        //     end--;
+        // }
+        for(int i = 0,j=n-1;i<n/2;){
+            char c = s[i];
+            s[i++]=s[j];
+            s[j--]=c;
+        }
+        System.out.println(s);
+    }
+}
