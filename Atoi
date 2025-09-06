@@ -1,0 +1,41 @@
+import java.util.*;
+import java.io.*;
+
+public class Solution {
+    public static int createAtoi(String str) {
+        if(str.length() == 0) return 0;
+        // Write your code here.
+        int n = str.length();
+        int i = 0;
+
+        //remove white spaces
+        while(i < n && str.charAt(i) == ' '){
+            i++;
+        }
+        if(i == n) return 0;
+
+        //check sign
+        int sign = 1;
+        if(i < n && (str.charAt(i) == '-' || str.charAt(i) == '+')){
+            sign = (str.charAt(i) == '-')? -1 : 1;
+            i++;
+        }
+
+        //convert into number
+        int res = 0;
+        while(i < n && Character.isDigit(str.charAt(i))){
+            int digit = str.charAt(i) - '0';
+
+            if(res > Integer.MAX_VALUE/10 || (res < Integer.MIN_VALUE/10 && digit == 7)){
+                return (sign == 1)? Integer.MAX_VALUE: Integer.MIN_VALUE;
+            }
+
+            res = res * 10 + digit;
+            i++;
+        }
+
+        return sign*res;
+
+
+    }
+}
